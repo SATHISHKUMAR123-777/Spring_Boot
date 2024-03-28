@@ -1,0 +1,52 @@
+package New;
+
+public class Rotate_Array {
+	
+	private static void reverse(int[] arr, int start, int end) {
+        while (start < end) {
+            // Swap elements at start and end indices
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            // Move start pointer forward and end pointer backward
+            start++;
+            end--;
+        }
+    }
+    // Method to rotate an array by k positions
+    public static void rotate(int[] arr, int k) {
+        int n = arr.length;
+        k = k % n; // Handle cases where k is greater than array length
+        
+        // Step 1: Reverse the entire array
+        reverse(arr, 0, n - 1);
+        
+        // Step 2: Reverse the elements from index 0 to k-1
+        reverse(arr, 0, k - 1);
+        
+        // Step 3: Reverse the elements from index k to end of array
+        reverse(arr, k, n - 1);
+    }
+	
+public static void main(String[] args) {
+	int[] arr = {1, 2, 3, 4, 5};
+    int k = 3; // Number of positions to rotate
+    
+    System.out.println("Original array: ");
+    for (int num : arr) {
+        System.out.print(num + " ");
+    }
+    
+    // Rotate the array by k positions
+    rotate(arr, k);
+    
+    System.out.println("\nArray after rotating by " + k + " positions: ");
+    for (int num : arr) {
+        System.out.print(num + " ");
+    }
+}
+}
+
+
+
+
